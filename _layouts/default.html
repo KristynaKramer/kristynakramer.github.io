@@ -16,13 +16,14 @@
         <ul>
             <li class="section-title"><a href="data-home.html">DATA</a></li>
             <li class="subsection"><a href="data-home.html" class="{% if page.url contains '/data-home' %}active{% endif %}">Home</a></li>
-            <li class="subsection"><a href="data-portfolio.html">Portfolio</a></li>
-            <li class="subsection"><a href="data-certificates.html">Certificates</a></li>
+            <li class="subsection"><a href="data-portfolio.html" class="{% if page.url contains '/data-portfolio' %}active{% endif %}">Portfolio</a></li>
+            <li class="subsection"><a href="data-certificates.html" class="{% if page.url contains '/data-certificates' %}active{% endif %}">Certificates</a></li>
             <li class="section-title"><a href="math-home.html">MATH</a></li>
-            <li class="subsection"><a href="math-home.html">Home</a></li>
-            <li class="subsection"><a href="math-research.html">Research</a></li>
-            <li class="subsection"><a href="math-teaching.html">Teaching</a></li>
+            <li class="subsection"><a href="math-home.html" class="{% if page.url contains '/math-home' %}active{% endif %}">Home</a></li>
+            <li class="subsection"><a href="math-research.html" class="{% if page.url contains '/math-research' %}active{% endif %}">Research</a></li>
+            <li class="subsection"><a href="math-teaching.html" class="{% if page.url contains '/math-teaching' %}active{% endif %}">Teaching</a></li>
             <li class="section-title"><a href="blog-home.html">BLOG</a></li>
+            <li class="subsection"><a href="blog-home.html" class="{% if page.url contains '/blog-home' %}active{% endif %}">Home</a></li>
         </ul>
     </nav>
 
