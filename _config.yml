@@ -5,7 +5,7 @@ baseurl: "" # Leave empty if your site is at username.github.io
 url: "" # Your site's final URL
 
 # Clean URLs (Removes .html from links)
-permalink: /:basename/
+# permalink: /:basename/
 
 baseurl: ""  # Keep empty if your site is at username.github.io
 
