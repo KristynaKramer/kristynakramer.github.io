@@ -1,0 +1,20 @@
+# Basic Site Settings
+title: Kristýna Kramer
+description: "Mathematician and Data Scientist"
+baseurl: "" # Leave empty if your site is at username.github.io
+url: "" # Your site's final URL
+
+# Clean URLs (Removes .html from links)
+permalink: /:basename/
+
+baseurl: ""  # Keep empty if your site is at username.github.io
+
+# Tell Jekyll to include specific folders if needed
+include:
+  - .htaccess
+  - documents/
+
+# Exclude files you don't want on the live site
+exclude:
+  - README.md
+  - .gitignore
