@@ -4,34 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 
-    		     | Data | Home 
+    		    Kristýna Kramer | Blog | Home 
   			 </title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
-    <nav>
-        <h1> <a href="index.html">Kristýna Kramer</a></h1>
+    
+   <!-- 1. Hidden Checkbox for Toggle Logic -->
+    <input type="checkbox" id="mobile-menu-toggle">
+
+    <!-- 2. Your Existing Desktop Navigation -->
+    <nav class="desktop-nav">
+    <!--<nav>-->
+        <h1> <a href="/index.html">Kristýna Kramer</a></h1>
         <ul>
-            <li class="section-title"><a href="data-home.html">DATA</a></li>
-            <li class="subsection"><a href="data-home.html" class="">Home</a></li>
-            <li class="subsection"><a href="data-portfolio.html" class="">Portfolio</a></li>
-            <li class="subsection"><a href="data-certificates.html" class="">Certificates</a></li>
-            <li class="section-title"><a href="math-home.html">MATH</a></li>
-            <li class="subsection"><a href="math-home.html" class="">Home</a></li>
-            <li class="subsection"><a href="math-research.html" class="">Research</a></li>
-            <li class="subsection"><a href="math-teaching.html" class="">Teaching</a></li>
-            <li class="section-title"><a href="blog-home.html">BLOG</a></li>
-            <li class="subsection"><a href="blog-home.html" class="active">Home</a></li>
+            <li class="section-title"><a href="/data-home.html" class="">DATA</a></li>
+            
+            <li class="subsection"><a href="/data-home.html" class="">Home</a></li>
+            
+            <li class="subsection"><a href="/data-portfolio.html" class="">Portfolio</a></li>
+            
+            <li class="subsection"><a href="/data-certificates.html" class="">Certificates</a></li>
+            
+            <li class="section-title"><a href="/math-home.html" class="">MATH</a></li>
+            
+            <li class="subsection"><a href="/math-home.html" class="">Home</a></li>
+            
+            <li class="subsection"><a href="/math-research.html" class="">Research</a></li>
+            
+            <li class="subsection"><a href="/math-teaching.html" class="">Teaching</a></li>
+            
+            <li class="section-title"><a href="/blog-home.html" class="active-section">BLOG</a></li>
+            
+            <li class="subsection"><a href="/blog-home.html" class="active">Home</a></li>
         </ul>
     </nav>
 
     <main>
        
         <h1>Hey Kristýna, how are you?</h1>
-<h4>Infrequently published stories about living abroad</h4>
+<h3>Infrequently published stories about living abroad</h3>
+
+<div class="article-content">
+<p> I started a blog in 2018 when I moved to Germany for my PhD, as a way to share my new life with my family and friends. I quickly realized how time consuming it is, so there are only a few stories. However, every couple of years, I feel like adding a story. Most of the stories here are a copy of the original versions published on blogger.</p>
 
 
 <ul class="spaced-list">
+    <li> 
+        <a href="Blog/05-DortmunderNachtschicht2022.html"><b>Dortmunder Nachtschicht 2022</b></a> (21.10.2022)<br>
+        A reportage from an overnight German puzzle game. This story is written in German.
+    </li>
+
+    <li> 
+        <a href="Blog/04-Hair.html"><b>Hair story</b></a> (03.04.2021)<br>
+        I shaved my head. Why?
+    </li>
+
+    <li> 
+        <a href="Blog/03-AufDeutschLeben.html"><b>Auf Deutsch leben</b></a> (19.10.2018) <br>
+        Even in Germany, English might not be sufficient. So you have to improvise with the German vocabulary you have. 
+    </li>
+
     <li> 
         <a href="Blog/02-MovingToDortmund.html"><b>Moving to Dortmund</b></a> (10.10.2018) <br>
         Don't get scammed when looking for an apartment.
@@ -43,6 +77,41 @@
     </li>
 </ul>
 
+</div>
+
     </main>
+
+    <!-- 4. Mobile Top Bar (Visible only on narrow screens) -->
+    <header class="mobile-top-bar">
+        <label for="mobile-menu-toggle" class="hamburger-label">&#9776;</label>
+        <span class="brand-name">Kristýna Kramer</span>
+    </header>
+
+    <!-- 5. Mobile Full Screen Menu Overlay -->
+    <nav class="mobile-nav-overlay">
+        <label for="mobile-menu-toggle" class="close-label">&times;</label>
+        
+        <ul class="mobile-nav-links">
+            <li class="section-title"><a href="/data-home.html" class="">DATA</a></li>
+            
+            <li class="subsection"><a href="/data-home.html" class="">Home</a></li>
+            
+            <li class="subsection"><a href="/data-portfolio.html" class="">Portfolio</a></li>
+            
+            <li class="subsection"><a href="/data-certificates.html" class="">Certificates</a></li>
+            
+            <li class="section-title"><a href="/math-home.html" class="">MATH</a></li>
+            
+            <li class="subsection"><a href="/math-home.html" class="">Home</a></li>
+            
+            <li class="subsection"><a href="/math-research.html" class="">Research</a></li>
+            
+            <li class="subsection"><a href="/math-teaching.html" class="">Teaching</a></li>
+            
+            <li class="section-title"><a href="/blog-home.html" class="active-section">BLOG</a></li>
+            
+            <li class="subsection"><a href="/blog-home.html" class="active">Home</a></li>
+        </ul>
+    </nav>
 </body>
 </html>

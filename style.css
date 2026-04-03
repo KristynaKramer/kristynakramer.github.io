@@ -2,9 +2,10 @@
 
 :root {
     --maroon: #550000;
-    --beige: #EBDDBE;
+    --beige: #ffeabc;
     --white: #ffffff;
     --black: #000000;
+    /*--beige: #EBDDBE;*/
 }
 
 * {
@@ -21,81 +22,267 @@ body {
     min-height: 100vh;
 }
 
-/* Fixed Left Menu */
-nav {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 250px;
-    height: 100vh;
-    background-color: var(--maroon);
-    padding: 1rem 1rem;
-    overflow-y: auto;
-}
+/* --- NAVIGATION --- */
 
-nav h1 {
-    color: var(--white);
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
+ /* --- 3. DESKTOP NAVIGATION --- */
+        nav.desktop-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: var(--maroon);
+            padding: 1rem 1rem;
+            overflow-y: auto;
+            z-index: 100;
+            display: block;
+        }
 
-nav ul {
-    list-style: none;
-}
+        nav.desktop-nav h1 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-nav ul li {
-    margin-bottom: 0.5rem;
-}
+        nav.desktop-nav ul { list-style: none; }
+        nav.desktop-nav ul li { margin-bottom: 0.5rem; }
 
-nav a {
-    color: var(--white);
-    text-decoration: none;
-    display: block;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
+        nav.desktop-nav a {
+            color: var(--white);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
 
-nav a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--white);
-}
+        nav.desktop-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+        }
 
-nav a.active {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: var(--beige);
-}
+        nav.desktop-nav a.active {
+            color: var(--beige);
+        }
 
-/* Menu Sections */
-nav .section-title {
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-}
- 
-nav .section-title:first-child {
-    margin-top: 0;
-}
- 
-nav .section-title a {
-    color: var(--white);
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
- 
-nav .section-title a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
+        nav.desktop-nav a.active-section {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
 
+        nav.desktop-nav .section-title {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        nav.desktop-nav .section-title:first-child { margin-top: 0; }
+
+        nav.desktop-nav .subsection {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        
+
+/* --- 5. MOBILE MENU ELEMENTS (Corrected for Blocking Issue) --- */
+        
+        #mobile-menu-toggle {
+            display: none;
+        }
+
+        .mobile-top-bar {
+            display: none; /* Hidden on desktop */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: var(--maroon);
+            color: var(--white);
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .hamburger-label {
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            /* Ensure hamburger is clickable */
+            position: relative; 
+            z-index: 1002; /* Force hamburger to be ABOVE the menu even if menu is partially there */
+        }
+
+        .brand-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .mobile-nav-overlay {
+            display: none; /* Hidden on desktop */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-width: 100vw; /* Never exceed viewport width */
+            height: 100vh;
+            background-color: var(--maroon);
+            z-index: 1001;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-y: auto; /* Allows scrolling if menu is too long */
+            /* Start hidden */
+            visibility: hidden; 
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s;
+            padding-top: 80px; /* Space for the close button */
+            padding-bottom: 20px; /* Extra space at the bottom */
+        }
+
+        .close-label {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--white);
+            line-height: 1;
+            padding: 10px;
+            pointer-events: none; /* Disabled when menu is closed */
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            width: 100%;
+            max-width: 100%; /* Never exceed parent */
+            margin-left: 0; /* Reset any global margin that might push it */
+            padding-left: 20px; /* Add padding inside instead of margin */
+            padding-right: 20px;
+            box-sizing: border-box;
+        }
+
+        .mobile-nav-links .section-title a {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--white);
+            margin-top: 20px;
+            padding: 5px 10px;
+        }
+
+        .mobile-nav-links .subsection a {
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            color: var(--white);
+            margin-top: 20px;
+            padding: 5px 20px;
+        }
+
+        .mobile-nav-links li { margin: 0px 0; }
+
+        .mobile-nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 8px 8px;
+            display: block;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .mobile-nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+        }
+
+        .mobile-nav-links a.active-section {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .mobile-nav-links a.active {
+            color: var(--beige);
+        }
+
+        /* --- 6. MEDIA QUERY: MOBILE ACTIVATION --- */
+        @media (max-width: 768px) {
+            /* Hide Desktop Nav */
+            nav.desktop-nav { 
+                display: none; 
+            }
+
+            /* Reset Main Container */
+            main {
+                margin-left: 0;
+                padding: 2rem 1.5rem; /* Keep your existing padding */
+                padding-top: 0; /* Reset to ensure we control it via h1 */
+            }
+
+            /* THE CRITICAL FIX: Target the H1 inside main directly */
+            main h1 {
+                margin-top: 40px !important; 
+                padding-top: 0;
+            }
+
+            main h2 {
+                margin-top: 40px !important; 
+                padding-top: 0;
+            }
+
+            /* Show Mobile Top Bar */
+            .mobile-top-bar { 
+                display: flex; 
+            }
+
+            /* Setup Mobile Overlay */
+            .mobile-nav-overlay { 
+                display: flex; 
+                visibility: hidden;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .close-label { 
+                pointer-events: none; 
+            }
+        }
+
+        /* --- 7. TOGGLE LOGIC (The Fix) --- */
+        
+        /* When Checked: Make Menu Visible and Slide Down */
+        #mobile-menu-toggle:checked ~ .mobile-nav-overlay {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto; /* Enable clicks on menu items */
+        }
+
+        /* When Checked: Hide Top Bar */
+        #mobile-menu-toggle:checked ~ .mobile-top-bar {
+            display: none; /* Completely remove top bar from layout */
+        }
+        
+        /* When Checked: Enable Close Button */
+        #mobile-menu-toggle:checked ~ .mobile-nav-overlay .close-label {
+            pointer-events: auto;
+        }
+
+
+/* --- MAIN CONTENT --- */
 /* Main Content Area */
 main {
     margin-left: 250px;
     flex: 1;
-    padding: 3rem;
-    overflow-y: auto;
+    padding: 1rem 3rem 3rem 3rem; /* top, right, bottom, left */
+    transition: margin-left 0.3s;
 }
 
 /* Typography */
@@ -107,6 +294,7 @@ h1, h2, h3 {
 h1 {
     font-size: 2.5rem;
     color: var(--maroon);
+    margin-top: 0;
 }
 
 h2 {
@@ -168,6 +356,12 @@ section {
     margin-bottom: 0;
   }
 
+  .blog-list li{
+    margin-bottom: 10px;
+    padding-left: 5px;   /* Indents the content including bullets/numbers */
+    margin-left: 40px;    /* Moves the entire list box to the right */
+  }
+
 /* Teaching entries */
     .term-list li {
         padding-left: 5px;
@@ -182,6 +376,33 @@ section {
     margin-bottom: 15px;
     }
 
+/* Main content */
+    .article-content {
+    max-width: min(75ch, 800px);
+    }
+
+    @media (max-width: 768px) {
+        .article-content {
+        max-width: 100%;
+        padding: 0 1rem;
+        }
+    }
+
+/* Two columns */
+    .two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 40px;
+    }
+
+    @media (max-width: 768px) {
+    .two-columns {
+        grid-template-columns: 1fr; /* Stack columns on mobile */
+    }
+    }
+
+
+/* --- IMAGES --- */
 /* Picture on the side */
     .content-wrapper {
             display: flex;
@@ -198,7 +419,7 @@ section {
             height: auto;
             margin-bottom: 5px;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
         .content-wrapper {
                 flex-direction: column;
             }
@@ -208,10 +429,51 @@ section {
     }
 
 /* Bottom picture */
-    .panoramatic-photo{
+    .panoramic-photo{
         width: 100%;
         margin-top: 40px;
         margin-bottom: 5px;
+    }
+/* Blog pictures */
+     .blog-photo-landscape{
+        width: 100%;
+        max-width: 800px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .blog-photo-portrait{
+        width: 50%;
+        max-width: 400px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: block;       /* Makes the image behave like a block element */
+        margin-left: auto;    /* Pushes left margin to auto */
+        margin-right: auto;
+    }
+
+    .image-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two equal columns */
+        gap: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        }
+
+    .image-grid img {
+        width: 90%;
+        height: auto;
+        display: block;
+        }
+
+/* Certificates */
+    .certificate{
+        width: 300px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        display: block; 
+        margin-left: auto;    /* Pushes left margin to auto */
+        margin-right: auto;
     }
     
 
