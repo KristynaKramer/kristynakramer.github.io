@@ -466,6 +466,15 @@ section {
         display: block;
         }
 
+    .blog-graph{
+        max-width: 800px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: block;       /* Makes the image behave like a block element */
+        margin-left: auto;    /* Pushes left margin to auto */
+        margin-right: auto;
+    }
+
 /* Certificates */
     .certificate{
         width: 300px;
