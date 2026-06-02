@@ -388,6 +388,16 @@ section {
         }
     }
 
+    .project-content {
+    max-width: min(60ch, 600px);
+    }
+
+    @media (max-width: 768px) {
+        .article-content {
+        max-width: 100%;
+        padding: 0 1rem;
+        }
+    }
 /* Two columns */
     .two-columns {
     display: grid;

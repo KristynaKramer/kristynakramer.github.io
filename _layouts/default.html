@@ -21,11 +21,11 @@
     <!--<nav>-->
         <h1> <a href="{{ site.baseurl }}/index.html">Kristýna Kramer</a></h1>
         <ul>
-            <li class="section-title"><a href="{{ site.baseurl }}/data-home.html" class="{% if page.url contains '/data-' %}active-section{% endif %}">DATA</a></li>
+            <li class="section-title"><a href="{{ site.baseurl }}/data-home.html" class="{% if page.url contains '/Portfolio/' or page.url contains '/data-' %}active-section{% endif %}">DATA</a></li>
             
             <li class="subsection"><a href="{{ site.baseurl }}/data-home.html" class="{% if page.url contains '/data-home' %}active{% endif %}">Home</a></li>
             
-            <li class="subsection"><a href="{{ site.baseurl }}/data-portfolio.html" class="{% if page.url contains '/data-portfolio' %}active{% endif %}">Portfolio</a></li>
+            <li class="subsection"><a href="{{ site.baseurl }}/data-portfolio.html" class="{% if page.url contains '/Portfolio/' or page.url contains '/data-portfolio' %}active{% endif %}">Portfolio</a></li>
             
             <li class="subsection"><a href="{{ site.baseurl }}/data-certificates.html" class="{% if page.url contains '/data-certificates' %}active{% endif %}">Certificates</a></li>
             
