@@ -3,6 +3,76 @@ layout: default
 title: "Data | Portfolio"
 ---
 
-<h1>Kaya decomposition</h1>
+<h2>Kaya decomposition</h2>
+
+<div class="article-content">
+    <p>
+        <i>Kaya decomposition</i> (or <i>Kaya identity</i>) is a way to understand the CO&#8322; emissions in terms of the following components: human population, GDP per capita, energy intensity (per unit of GDP), and carbon intensity (emissions per unit of energy consumed). It is depicted as a percentage growth compared to the previous year.
+    </p>
+
+    <p>
+        Below you can select a country and inspect the Kaya decomposition of its carbon emissions. For comparison, we also depict the measured CO&#8322; emissions from fossil fuel combustion. 
+    </p>
+
+    <p>
+        Please note that the graphic depends on available data. For some countries, some components might be available only for some years or be missing entirely. 
+    </p>
+
+    <p>
+        For a larger view or if the applet does not load properly, click <a href="https://kaya-decomposition-app.streamlit.app/" target="_blank">here</a>.
+    </p>
+
 
 <iframe src="https://kaya-decomposition-app.streamlit.app/?embed=true" width="100%" height="600"></iframe>
+
+
+    <br>
+    <br>
+    <h3>Math behind the decomposition</h3>
+    <p>
+        The idea behind the Kaya decomposition is the following identity:
+            \[F = P \cdot \frac{G}{P} \cdot \frac{E}{G} \cdot \frac{F}{E}\]
+        Here:
+        <ul class="list">
+            <li>\(F\) is the CO&#8322; emissions from human sources;</li>
+            <li>\(P\) denotes the population;</li>
+            <li>\(G\) stands for the GDP; and</li>
+            <li>\(E\) is the energy consumption.</li>
+        </ul>
+    </p>
+    <p>
+        Now observe the identity from the mathematical point of view: almost everything on the right side cancels out, and we are left with \(F=F\). That explains why the identity is valid. However, we can now reinterpret the factors of the product:
+        <ul class="list">
+            <li>\(P\) is still the population;</li>
+            <li>\(\frac{G}{P}\), i.e., the GDP divided by the population, measures the <i>GDP per capita</i>;</li>
+            <li>\(\frac{E}{G}\), i.e., the energy consumption divided by the GDP, measures how much energy is consumed per each unit of GDP, so we call it the <i>energy intensity of GDP</i>;</li>
+            <li>\(\frac{F}{E}\), i.e., the amount of the CO&#8322; emissions divided by the energy consumption, measures how many carbon emissions are produced per each unit of energy, and we call it the <i>emission intensity of energy</i>.</li>
+        </ul>
+    </p>
+    <p>
+        So we understand the Kaya identity, but how does it relate to the plot? In the identity, we have a product of four components. We could depict the product of two numbers as an area, but for the product of four components we would need at least four dimensions. So instead, we use the <i>log-linearization trick</i>: it includes taking a logarithm of both sides of the identity and then differentiating the new equation. The logarithm translates multiplication into addition, and through the differentiation we obtain the growth. The downside is that we end up with an approximation instead of the equality we had. But the upside is that we can now easily compare values that were originally in different units. This (roughly) explains why it makes sense to sum the percentage growth of the four components.
+    </p>
+     <h3>Data sources</h3>
+     <p>
+        <ul class="list">
+            <li><a href="https://edgar.jrc.ec.europa.eu/dataset_ghg2025" target="_blank">CO&#8322; emissions from fossil fuels</a>;</li>
+            <li><a href="https://data.worldbank.org/indicator/SP.POP.TOTL" target="_blank">population</a>;</li>
+            <li><a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.KD.ZG" target="_blank">GDP per capita (annual growth in %)</a>;</li>
+            <li><a href="https://data.worldbank.org/indicator/EG.USE.COMM.GD.PP.KD" target="_blank">energy use (kg of oil equivalent) per $1,000 GDP</a>;</li>
+            <li><a href="https://ourworldindata.org/grapher/co2-per-unit-energy" target="_blank">carbon intensity of energy</a>.</li>
+        </ul>
+     </p>
+
+
+</div>
+
+<hr>
+<p> 
+    The source code of the applet is available on my <a href="https://github.com/KristynaKramer/Kaya-decomposition-app/blob/c667e1b628f7bc293300500286b421e4eb41613b/Kaya-web.py" target="_blank">Github repository</a>.
+</p>
+
+
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+       onload="renderMathInElement(document.body);"></script>

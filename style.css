@@ -356,6 +356,11 @@ section {
     margin-bottom: 0;
   }
 
+  .list li {
+    padding-left: 5px;   
+    margin-left: 40px;
+  }
+
   .blog-list li{
     margin-bottom: 10px;
     padding-left: 5px;   /* Indents the content including bullets/numbers */
