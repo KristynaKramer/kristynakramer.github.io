@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 
+    		    Kristýna Kramer | Data | Portfolio 
+  			 </title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    
+   <!-- 1. Hidden Checkbox for Toggle Logic -->
+    <input type="checkbox" id="mobile-menu-toggle">
+
+    <!-- 2. Your Existing Desktop Navigation -->
+    <nav class="desktop-nav">
+    <!--<nav>-->
+        <h1> <a href="/index.html">Kristýna Kramer</a></h1>
+        <ul>
+            <li class="section-title"><a href="/data-home.html" class="active-section">DATA</a></li>
+            
+            <li class="subsection"><a href="/data-home.html" class="">Home</a></li>
+            
+            <li class="subsection"><a href="/data-portfolio.html" class="active">Portfolio</a></li>
+            
+            <li class="subsection"><a href="/data-certificates.html" class="">Certificates</a></li>
+            
+            <li class="section-title"><a href="/math-home.html" class="">MATH</a></li>
+            
+            <li class="subsection"><a href="/math-home.html" class="">Home</a></li>
+            
+            <li class="subsection"><a href="/math-research.html" class="">Research</a></li>
+            
+            <li class="subsection"><a href="/math-teaching.html" class="">Teaching</a></li>
+            
+            <li class="section-title"><a href="/blog-home.html" class="">BLOG</a></li>
+            
+            <li class="subsection"><a href="/blog-home.html" class="">Home</a></li>
+        </ul>
+    </nav>
+
+    <main>
+       
+        <h2>Hot weather in Milan (June 2026)</h2>
+
+<div class="article-content">
+    <p><i>
+         This is a cross-over between a portfolio project and a blog post. I used data from <a href='https://open-meteo.com/en/docs/historical-weather-api?bounding_box=-90,-180,90,180&start_date=1940-06-21&latitude=45.4643&longitude=9.1895' target="_blank">open-meteo.com</a>. You can also review the Jupyter notebook with my code <a href="03-MilanHeatwave-JupyterNotebook.html">here</a>.
+
+    </i></p>
+    <p>
+        It is only June and we already have a second heatwave of this year. Since this is only my second summer in Milan (and in Italy in general), I want to know how common these high temperatures are here.
+    </p>
+
+
+    <h3>Heatwaves in Milan</h3>
+    <p>
+        One of the main topics in all European media these days is the current heatwave. But to be able to analyze former heatwaves (and also just because I am a mathematician), I need to know what is the definition of a heatwave. However, it seems like there is no unique definition. One I found that seems more general and hence applicable for any place around the world, is the following one (from Wikipedia):
+    </p>
+
+        <p>
+            <i> "A heatwave occurs when the daily maximum temperature of more than five consecutive days exceeds the average maximum temperature by 5 °C, the normal period being 1961–1990."</i>
+        </p>
+
+    <p>
+        So, using this definition, let us look at the number of days in each year that count as a part of a heatwave.
+    </p>
+
+        <figure>
+            <img src="03-Plots/Milan-heatwavenum-5.png", alt="Bar graph showing the number of heatwave days per year in Milan from 1941 to 2026.", class="blog-photo-landscape">
+            <figcaption><b>Fig. 1:</b> Number of days that classify as a heatwave using the "5°C above average" definition.</figcaption>
+        </figure>
+
+    <br>
+    <p>
+        We can see the trend of increasing number of heatwave days, with the last decade being particularly hot. Also, this year (the data ends on 21.06.2026), we have already had more heatwave days than during the entire last year.
+    </p>
+
+    <p>
+        Let's also see when during the year these heatwaves appear and what kind of temperatures the inhabitants of Milan experience.
+    </p>
+
+        <figure>
+            <img src="03-Plots/Milan-heatwavetemp-5.png", alt="Line graph showing temperatures in Milan during heatwaves for the years 2022–2026.", class="blog-photo-landscape">
+            <figcaption><b>Fig. 2:</b> Temperatures during heatwaves using the "5°C above average" definition.</figcaption>
+        </figure>
+    
+    <br>
+    <p>
+        This plot shows all the days since 01.01.2022 that classified as heatwave days, and what was the maximum temperature of that day. It tells us that this year has so far not been as bad (or as hot) as the year 2022. That is the year that shows the highest number of heatwave days in the previous plot. 
+    </p>
+
+    <h3>Heatwaves in Edmonton</h3>
+    <p>
+        The idea behind choosing this particular definition of a heatwave was that it seems to be general and can be applied to any part of the world. Let's test it and plot the same graphs for Edmonton. (If you wonder why Edmonton: out of all the places I have lived, Edmonton has climate that differs from the Milanese one the most.)
+    </p>
+
+        <figure>
+            <img src="03-Plots/Edmonton-heatwavenum-5.png", alt="Bar graph showing the number of heatwave days per year in Edmonton from 1941 to 2026.", class="blog-photo-landscape">
+            <figcaption><b>Fig. 3:</b> Number of days that classify as a heatwave using the "5°C above average" definition.</figcaption>
+        </figure>
+    <br>
+    <p>
+        Edmonton has more constant number of heatwave days per year than Milan. That should not be surprising: it is well-known that the global warming has stronger effects on temperatures in Europe than in continental Canada.
+    </p>
+        <figure>
+            <img src="03-Plots/Edmonton-heatwavetemp-5.png", alt="Line graph showing temperatures in Edmonton during heatwaves for the years 2022–2026.", class="blog-photo-landscape">
+            <figcaption><b>Fig. 4:</b> Temperatures during heatwaves using the "5°C above average" definition.</figcaption>
+        </figure>
+    <br>
+    <p>
+        Notice that in Edmonton, most of the "heatwaves" occur during the winter! In my experience, the temperatures in winter are very variable and can be anywhere between -30°C and 0°C. Of course, this is just my personal experience from one year I lived in Edmonton, so it would be worth a separate analysis. However, 5°C or more above average is probably nothing unusual. 
+    </p>
+
+    <h3>Changing the definition of a heatwave</h3>
+    <p>
+        Can we improve the definition of a heatwave? As we noticed by applying our definition to Milan and Edmonton, it does not take into account how variable the temperature is (and always has been). Let's try to take that into account and exchange the 5°C for standard deviation. 
+    </p>
+        <figure>
+            <img src="03-Plots/Edmonton-heatwavetemp-std.png", alt="Line graph showing temperatures in Edmonton during heatwaves for the years 2022–2026.", class="blog-photo-landscape">
+            <figcaption><b>Fig. 5:</b> Temperatures during heatwaves using the "std above average" definition.</figcaption>
+        </figure>
+    
+    <br>
+    <p>
+        This definition indeed decreased the number of "heatwaves" in winter. If we compare Fig. 5 with Fig. 4, we can see that there is now indeed wider "padding" above the mean in winter. We can see that the standard deviation in winter is generally larger than in summer (which corresponds with my personal experience).
+    </p>
+
+    <p>
+        Let's apply this definition to Milan.
+    </p>
+
+        <figure>
+            <img src="03-Plots/Milan-heatwavetemp-std.png", alt="Line graph showing temperatures in Milan during heatwaves for the years 2022–2026.", class="blog-photo-landscape">
+            <figcaption><b>Fig. 6:</b> Temperatures during heatwaves using the "std above average" definition.</figcaption>
+        </figure>
+    
+    <br>
+    <p>
+        Oppose to Edmonton, the standard deviation remains fairly constant over the year. And, more importantly, it is less than 5°C. Thus, while we decreased the number of heatwaves in Edmonton, we increased it in Milan. I don't know if I like that, Milan was hot enough with the first definition :)
+    </p>
+
+    <p>
+        I think it is fair to say that neither of the tested definitions works perfectly for any place of the world. Maybe there is a better one that I overlooked. Or maybe it is the best to use localized definitions like "five days of maximum temperatures above 30°C that don't decrease below 25°C".
+    </p>
+
+    <h3>How hot it is in Milan?</h3>
+    <p> 
+        Let's forget about heatwaves and just look at the maximum daily temperatures in Milan in the last two years. For comparison, we plot the average of the maximum temperatures over the reference period 1961–1990 (the same as we used for the heatwaves).
+    </p>
+
+        <figure>
+            <img src="03-Plots/Milan-daily-max.png", alt="Line graph showing maximum temperatures in Milan in 2025 and 2026.", class="blog-photo-landscape">
+            <figcaption><b>Fig. 7:</b> Maximum temperatures compared with the average maximum temperatures and standard deviation.</figcaption>
+        </figure>
+
+    <br>
+
+    <h3>Spaghetti alla Milanese</h3>
+
+    <p>
+        Another way how to compare current and past temperatures is to depict the measurements for all previous years, and then put the average of the reference period and the current year visibly on top. This is nicknamed the "Copernicus spaghetti graph". It was recommended to me by Claude when I asked it for a small data analysis project related to the current temperatures, so even though I don't think it is the most informative plot, I feel obliged to include it here.
+    </p>
+
+        <figure>
+            <img src="03-Plots/Milan-spaghetti.png", alt="Line graph showing maximum temperatures in Milan for the years 1941-2026", class="blog-photo-landscape">
+            <figcaption><b>Fig. 8:</b> Maximum daily temperatures in Milan.</figcaption>
+        </figure>
+
+    <br>
+    
+    <h3>Warming stripes</h3>
+    <p>
+        To wrap it up, I also recreated the famous warming stripes for Milan. The credit for the code goes to <a href="https://towardsdatascience.com/visualizing-climate-change-a-step-by-step-guide-to-reproduce-climate-stripes-with-python-ea1d440e8e8d/" target="_blank">towardsdatascience.com</a> (this is the only plot that I did not code myself).
+    </p>
+
+        <figure>
+            <img src="03-Plots/Milan-stripes.png", alt="Warming stripes for Milan", class="blog-photo-landscape">
+            <figcaption><b>Fig. 9:</b> Warming stripes for Milan.</figcaption>
+        </figure>
+
+
+
+
+</div>
+
+    </main>
+
+    <!-- 4. Mobile Top Bar (Visible only on narrow screens) -->
+    <header class="mobile-top-bar">
+        <label for="mobile-menu-toggle" class="hamburger-label">&#9776;</label>
+        <span class="brand-name">Kristýna Kramer</span>
+    </header>
+
+    <!-- 5. Mobile Full Screen Menu Overlay -->
+    <nav class="mobile-nav-overlay">
+        <label for="mobile-menu-toggle" class="close-label">&times;</label>
+        
+        <ul class="mobile-nav-links">
+            <li class="section-title"><a href="/data-home.html" class="">DATA</a></li>
+            
+            <li class="subsection"><a href="/data-home.html" class="">Home</a></li>
+            
+            <li class="subsection"><a href="/data-portfolio.html" class="">Portfolio</a></li>
+            
+            <li class="subsection"><a href="/data-certificates.html" class="">Certificates</a></li>
+            
+            <li class="section-title"><a href="/math-home.html" class="">MATH</a></li>
+            
+            <li class="subsection"><a href="/math-home.html" class="">Home</a></li>
+            
+            <li class="subsection"><a href="/math-research.html" class="">Research</a></li>
+            
+            <li class="subsection"><a href="/math-teaching.html" class="">Teaching</a></li>
+            
+            <li class="section-title"><a href="/blog-home.html" class="">BLOG</a></li>
+            
+            <li class="subsection"><a href="/blog-home.html" class="">Home</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

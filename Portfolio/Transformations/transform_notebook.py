@@ -40,7 +40,7 @@ FONT_OVERRIDE = """\
     --jp-ui-font-family: "Calibri", "Carlito", sans-serif;
     --jp-content-font-family: "Calibri", "Carlito", sans-serif;
     --jp-code-font-size: 1rem;
-    max-width: min(75ch, 800px);
+    max-width: min(90ch, 900px);
 }
 @media (max-width: 768px) {
     .jp-notebook-wrapper {

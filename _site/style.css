@@ -490,6 +490,12 @@ section {
         margin-right: auto;
     }
 
+/* Caption */
+    figcaption {
+        font-style: italic;
+        margin-left: 2rem;
+    }
+
 /* Certificates */
     .certificate{
         width: 300px;
