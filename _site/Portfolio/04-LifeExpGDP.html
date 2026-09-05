@@ -43,46 +43,64 @@
 
     <main>
        
-        <h1>Portfolio projects</h1>
+        <h2>Life expectancy and GDP</h2>
+
+
 
 <div class="article-content">
     <p>
-        Here you can find all of my projects, usually in the form of a blog post. For the source codes, see my <a href="https://github.com/KristynaKramer/data-analytics-projects" target="_blank">Github repository</a>. Note that the plots are typically not optimized for small screens.
+        I originally started this project as a part of my <a href="https://www.codecademy.com/" target="_blank">Codecademy</a> online learning. It was called "Data Visualization Portfolio Project" and the topic was, as you have probably guessed, "Life expectancy and GDP". However, the provided dataset was tiny and outdated (there were data for only six countries over the span of 16 years, ending in the year 2015). So, I decided to get a full dataset. And, since I wanted to create interactive plots (above all, the the famous <a href="https://www.gapminder.org/tools/#$model$markers$bubble$encoding$frame$value=1800;;;;;&chart-type=bubbles&url=v2" target="_blank">gapminder</a>-style bubble plot), I learned how to use a new Python library called <a href="https://plotly.com/python/" target="_blank">Plotly</a>.
     </p>
 
-    <ol reversed class="spaced-list">
-        <li> 
-            <a href="Portfolio/04-LifeExpGDP.html"><b>Life expectancy and GDP</b></a> (03.09.2026)<br>
-            Recreating the famous gapminder-style bubble graph and more. All graphs are interactive.
-            <br>
-            <b>Main tools:</b> Python (Pandas, Plotly)
+    <hr>
+
+    <br>
+    <p>
+       <i>All plots are interactive. In particular, you can click on the world region in the legend to hide all data related to that region.</i>
+    </p>
+
+    <h3>The dataset and its limitations</h3>
+
+        <p>
+            I downloaded the dataset  from <a href="https://ourworldindata.org/grapher/life-expectancy-vs-gdp-per-capita?time=2022&overlay=download-data" target="_blank">ourworldindata.org</a>.
+        </p>
+
+        <iframe src="04-Plots/map.html" width="735" height="370"></iframe>
+
+        <iframe src="04-Plots/scatter_data.html" width="735" height="370"></iframe>
+
+        <iframe src="04-Plots/bars_data.html" width="735" height="370"></iframe>
+
+
+
+    <h3>Bubbles</h3>
+        <p>
+           
+        </p>
+
+        <iframe src="04-Plots/bubbles.html" width="735" height="570"></iframe>
+
+    <h3>Life expectancy</h3>
+
+        <iframe src="04-Plots/smoothlines_life.html" width="735" height="420"></iframe>
+
+        <p>
             
-        </li>
+        </p>
 
-        <li> 
-            <a href="Portfolio/03-MilanHeatwave.html"><b>Hot weather in Milan</b></a> (26.06.2026)<br>
-            An analysis of the recent high temperatures in Milan in the context of historical data.<br>
-            <b>Main tools:</b> Python (Pandas, Seaborn), interactive version made with Streamlit
-        </li>
+        <iframe src="04-Plots/histograms_life.html" width="735" height="520"></iframe>
 
-        <li> 
-            <a href="Portfolio/02-KayaDecomposition.html"><b>Kaya decomposition</b></a> (15.06.2026)<br>
-            This is an applet that creates a Kaya decomposition of CO2 emissions for a selected country.<br>
-            <b>Main tools:</b> Python (Pandas, Matplotlib), Streamlit
-        </li>
 
-        <li> 
-            <a href="Portfolio/01-USMedicalInsurance.html"><b>US medical insurance</b></a> (02.06.2026)<br>
-            This project is a part of the <a href = "https://www.codecademy.com/" target="_blank">Codecademy</a> career path <i>Data Scientist: Analytics</i>. The goal is to explore a dataset about US medical insurance and try to identify what influences the costs for the customers. It is created in Jupyter notebook.<br>
-            <b>Main tools:</b> Python (Pandas, Seaborn)
-        </li>
-    </ol>
+    <h3>Population growth</h3>
+
+        <iframe src="04-Plots/bars_pop.html" width="735" height="520"></iframe>
+
+    
+
+
+
 
 </div>
-
-<img src="Photos/CorniceRidge.jpg" alt="Panoramic view Cornice Ridge (Canada)" class="panoramic-photo">
-<p><i>View from Cornice Ridge [2111 m] (Canada)</i></p>
-
 
     </main>
 
@@ -97,11 +115,11 @@
         <label for="mobile-menu-toggle" class="close-label">&times;</label>
         
         <ul class="mobile-nav-links">
-            <li class="section-title"><a href="/data-home.html" class="active-section">DATA</a></li>
+            <li class="section-title"><a href="/data-home.html" class="">DATA</a></li>
             
             <li class="subsection"><a href="/data-home.html" class="">Home</a></li>
             
-            <li class="subsection"><a href="/data-portfolio.html" class="active">Portfolio</a></li>
+            <li class="subsection"><a href="/data-portfolio.html" class="">Portfolio</a></li>
             
             <li class="subsection"><a href="/data-certificates.html" class="">Certificates</a></li>
             

@@ -383,7 +383,7 @@ section {
 
 /* Main content */
     .article-content {
-    max-width: min(75ch, 800px);
+    max-width: min(80ch, 800px);
     }
 
     @media (max-width: 768px) {
