@@ -106,10 +106,10 @@
         <br>
 
         <p>
-            Finally, we need to deal with countries that significantly changed their borders. Since there were many countries like that since 1848, I will only focus on the major ones: USSR, India, Yugoslavia, Germany, and Czechoslovakia (I am Czech, so I had to include the last one). This is important, since the dataset contains data both for USSR and Russia for most years; thus, when we aggregate the data, we would be counting Russia twice.
+            Finally, we need to deal with countries that significantly changed their borders. Since there were many countries like that since 1848, I will only focus on the major ones: USSR, India, Yugoslavia, Germany, and Czechoslovakia (I am Czech, so I had to include the last one). This is important, since the dataset contains data both for the USSR and Russia for most years; thus, when we aggregate the data, we would be counting Russia twice.
             <ul class="list">
                 <li>
-                    <b>USSR:</b> We consider USSR as one country for the time period 1922–1991, and as 15 separate countries otherwise.
+                    <b>USSR:</b> We consider the USSR as one country for the time period 1922–1991, and as 15 separate countries otherwise.
                 </li>
                 <li>
                     <b>India, Yugoslavia:</b> In these two cases, the dataset contains separate data for each country these blocks fell apart into, so we consider them separately. In particular, India never contains the area of Pakistan and Bangladesh, and Yugoslavia does not appear in the data at all.
@@ -169,7 +169,7 @@
         <iframe src="04-Plots/lines_life.html" width="735" height="420"></iframe>
 
         <p>
-            I assume you have noticed the big improvement of the life expectancy in Europe between 1991 and 1993. It is caused by the collapse of the Soviet Union (USSR); the Soviet Union as whole is considered as part of Europe in the dataset, while some of the successor states belong to Asia. Hence, Europe "lost" a significant amount of inhabitants with lower life expectancy. In particular, in 1992, the (weighted average) life expectancy in the European part of the former USSR was 68.2 years, while in the Asian part it was only 64.2 years. However, the main reason is the low life expectancy in USSR in the dataset: it is constant 36.4 years for the entire existence of USSR (i.e., the original dataset contained the life expectancy for USSR only for the year 1922, so we filled-in the same number until the year 1991). Of course, this value is not representative at all.
+            You may notice the big improvement of the life expectancy in Europe between 1991 and 1993. It is caused by the collapse of the Soviet Union (USSR); the Soviet Union as a whole is considered as part of Europe in the dataset, while some of the successor states belong to Asia. Hence, Europe "lost" a significant amount of inhabitants with lower life expectancy. In particular, in 1992, the (weighted average) life expectancy in the European part of the former USSR was 68.2 years, while in the Asian part it was only 64.2 years. However, the main reason is the low life expectancy in the USSR in the dataset: it is constant 36.4 years for the entire existence of the USSR (i.e., the original dataset contained the life expectancy for the USSR only for the year 1922, so we filled-in the same number until the year 1991). Of course, this value is not representative at all.
         </p>
 
         <p>
@@ -177,7 +177,7 @@
         </p>
 
         <p>
-            To see the development of the life expectancy in more detail, we depict it in histograms. Note that the anomalous life expectancy in USSR is clearly visible in the histogram for Europe.
+            To see the development of the life expectancy in more detail, we depict it in histograms. Note that the anomalous life expectancy in the USSR is clearly visible in the histogram for Europe.
         </p>
 
         <iframe src="04-Plots/histograms_life.html" width="735" height="520"></iframe>
@@ -186,7 +186,7 @@
 
     <h3>Population growth</h3>
         <p>
-            Finally, a nice and fun way how to look at the population growth in the various world regions is a "bar chart race".
+            Finally, a nice and fun way to look at the population growth in the various world regions is a "bar chart race".
         </p>
 
         <iframe src="04-Plots/bars_pop.html" width="735" height="520"></iframe>
