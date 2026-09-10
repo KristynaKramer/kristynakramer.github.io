@@ -366,6 +366,12 @@ section {
     padding-left: 5px;   /* Indents the content including bullets/numbers */
     margin-left: 40px;    /* Moves the entire list box to the right */
   }
+/* Bold and maroon numbers */
+
+  ol.bold-maroon-numbers li::marker {
+    font-weight: bold;
+    color: var(--maroon);
+    }
 
 /* Teaching entries */
     .term-list li {

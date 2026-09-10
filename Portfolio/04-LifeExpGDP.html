@@ -92,14 +92,28 @@ title: "Data | Portfolio"
 
         <iframe src="04-Plots/bubbles.html" width="735" height="570"></iframe>
 
-         <p>
+        <p>
+            There is a clear trend of the world getting richer and people living longer. Of course, some world regions (like Europe and North America) are richer than others (Africa). It is interesting that Asia contains both one of the wealthiest as well as one of the poorest countries in the world. 
+        </p>
+
+        <p>
+            One country that significantly defies the trend of increasing wealth is Venezuela: its GDP increased from $2,000 in 1915 to $18,000 in 2012, but then it quickly dropped to $7,000 in 2019, and then even lower during the Covid-19 pandemic.
+        </p>
+
+        <p>
+           Looking at the last ten years, there are two obvious outliers: on the wealthy side, there is Qatar with almost triple the GDP per capita of the United States. On the other side, there is the Central African Republic with its GDP per capita about $600 (that is less than $1.7 per day!). The life expectancy of the Central African Republic in the dataset is very changeable and likely incorrect; <a href="https://data.who.int/countries/140" target="_blank">WHO</a> provides much more stable data ranging between 49 and 53 in the same period. Looking at the previous century, there is another noticeable outlier on the life-expectancy scale: the USSR; however, we will discuss it later.
+        </p>
+        
+        <br>
+
+        <p>
             Note that in the bubble graph, we need all three values (GDP per capita, Life expectancy at birth, and Population size) to be known in order for the country to appear in the plot. The value that is missing the most in the dataset (even after extrapolating from the known data) is the GDP per capita. Therefore, we will look at the Life expectancy and the Population separately.
         </p>
 
     <h3>Life expectancy</h3>
         
         <p>
-            We first look at the development of the life expectancy at birth. To get the value for the entire region, we compute the weighted average:
+            We want to compare the life expectancy at birth by world region. To get the value for the entire region, we compute the weighted average:
             
             \[ 
             \frac{
@@ -119,6 +133,10 @@ title: "Data | Portfolio"
         </p>
 
         <p>
+            We can see that the overall trend is that the life expectancy increases over time, with noticeable set-backs during the first and the second world war, as well as the Great Chinese Famine affecting Asia in 1959–1961. Another (smaller) dip is visible in 2021, this one affecting all the world regions. Of course, this one was caused by the Covid-19 pandemic. (I plan to do another project that will dig deeper into this.)
+        </p>
+
+        <p>
             To see the development of the life expectancy in more detail, we depict it in histograms. Note that the anomalous life expectancy in USSR is clearly visible in the histogram for Europe.
         </p>
 
@@ -132,6 +150,10 @@ title: "Data | Portfolio"
         </p>
 
         <iframe src="04-Plots/bars_pop.html" width="735" height="520"></iframe>
+
+        <p>
+            Growing up in central Europe, I heard a lot the narrative that the population of Africa is growing quickly. This chart shows that while there is some truth behind it (Africa's population overgrew Europe's in 1995), it is not the whole story. Not many people realize that more than half of the world population lives in Asia — which, as we have seen, contains both one of the richest and one of the poorest countries in the world.
+        </p>
 
 
 
