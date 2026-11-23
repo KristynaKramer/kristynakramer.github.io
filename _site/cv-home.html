@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 
+    		    Kristýna Kramer | CV | Home 
+  			 </title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    
+   <!-- 1. Hidden Checkbox for Toggle Logic -->
+    <input type="checkbox" id="mobile-menu-toggle">
+
+    <!-- 2. Your Existing Desktop Navigation -->
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    <nav class="desktop-nav">
+        <h1><a href="/index.html">Kristýna Kramer</a></h1>
+        <ul>
+            <li class="section-title"><a href="/cv-home.html" class="active-section">CV</a></li>
+            
+                <li class="subsection"><a href="/cv-home.html" class="active">Home</a></li>
+            
+
+            <li class="section-title"><a href="/data-home.html" class="">DATA</a></li>
+            
+
+            <li class="section-title"><a href="/math-home.html" class="">MATH</a></li>
+            
+
+            <li class="section-title"><a href="/blog-home.html" class="">BLOG</a></li>
+            
+        </ul>
+    </nav>
+
+    <main>
+       
+        <h1>Curriculum vitae</h1>
+
+<p>
+  This page serves as a visual depiction of my learning and working journey since the start of my university studies in 2012. <b>Clicking on a box provides more details.</b> 
+</p>
+<p>
+  You can notice that I am often involved in more than one activity at a time, which makes creating a standard linear CV slightly complicated. However, if you prefer bullet points over visual depiction, you can check my <a href="Documents/CV-data.pdf" target="_blank">professional CV</a> (focused on my transformation into a data analyst) or my <a href="Documents/CV-math.pdf" target="_blank"> academical CV</a> (focused on my research in mathematics).
+</p>
+
+<!-- Timeline CV: data from Documents/timeline.csv (columns: color,start,end,category,title,short description,longdescription) -->
+<style>
+  #tcv {
+    /* Color names to use in the "color" column of the CSV */
+    --Burgundy: #550000;
+    --Orange: #8a3b00;
+    --Brown: #6b4a12;
+    --Teal: #0d3041;
+    --Indigo: #1d2c63;
+    --Green: #154029;
+
+    --gap: 34px;                                            /* space between the axis and the boxes */
+    --w: min(320px, calc((50% - var(--gap)) / 2 - 4px));    /* width of every box */
+    min-width: 640px; max-width: 1400px; margin: 0 auto; padding: 16px 12px;
+  }
+  #tcv-wrap { overflow-x: auto; contain: inline-size; }     /* scrolls sideways on narrow screens without widening <main> */
+  #tcv .heads { display: flex; gap: calc(var(--gap) * 2); margin-bottom: 40px; }
+  #tcv .heads h2 { flex: 1; text-align: center; }           /* layout only; typography comes from style.css */
+  #tcv .track { position: relative; }
+  #tcv .axis { position: absolute; left: 50%; top: 0; bottom: 0; width: 5px; background: #000; transform: translateX(-50%); }
+  #tcv .tick { position: absolute; left: 50%; width: 20px; height: 2px; background: #000; transform: translateX(-50%); }
+  #tcv .year { position: absolute; left: 50%; transform: translate(-50%, -50%); z-index: 1;
+               padding: 2px 8px; background: #fff; font-weight: 700; }
+  #tcv .year.present { transform: translate(-50%, -100%); margin-top: -4px; }
+  #tcv .item { position: absolute; padding: 3px 8px; border-radius: 4px; color: #fff; overflow: hidden; line-height: 1.2; }
+  #tcv .item b, #tcv .item span { display: block; }
+  #tcv .item.click { cursor: pointer; }
+  #tcv .item:focus-visible, #tcv .item.click:hover { outline: 2px solid #222; outline-offset: 1px; z-index: 2; }
+  #tcv .detail { position: absolute; z-index: 5; left: 50%; transform: translateX(-50%); width: min(380px, 92%);
+                 padding: 14px 16px; background: #fff; border: 3px solid; border-radius: 6px; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+  #tcv .detail h3 { margin: 0 24px 2px 0; }
+  #tcv .detail h3.short { font-weight: normal; }
+  #tcv .detail .when { margin-bottom: 8px; color: #666; }
+  #tcv .detail p { margin: 0; }
+  #tcv .detail p + p { margin-top: .75em; }
+  #tcv .detail .x { position: absolute; top: 6px; right: 8px; border: 0; background: none; font-size: 22px; line-height: 1; cursor: pointer; }
+</style>
+
+<div id="tcv-wrap"><div id="tcv"></div></div>
+
+<script>
+const CSV_URL = "Documents/timeline.csv";
+// category: E = education (left), W = work (right). Dates: YYYY-MM; end may be "present".
+
+function parseCsv(t) {
+  const rows = []; let row = [], f = "", q = false;
+  t = t.replace(/^\uFEFF/, "");
+  for (let i = 0; i < t.length; i++) {
+    const c = t[i];
+    if (q) { if (c !== '"') f += c; else if (t[i + 1] === '"') { f += '"'; i++; } else q = false; }
+    else if (c === '"') q = true;
+    else if (c === ",") { row.push(f); f = ""; }
+    else if (c === "\n" || c === "\r") { if (c === "\r" && t[i + 1] === "\n") i++; row.push(f); f = ""; rows.push(row); row = []; }
+    else f += c;
+  }
+  if (f || row.length) { row.push(f); rows.push(row); }
+  const head = rows.shift().map(h => h.trim().toLowerCase());
+  return rows.filter(r => r.some(x => x.trim()))
+             .map(r => Object.fromEntries(head.map((h, i) => [h, (r[i] || "").trim()])));
+}
+
+// Text is escaped; only <b>, <i>, <em>, <strong>, <br> and <a href="https://...">text</a> (or mailto:) are kept as HTML.
+const linkify = t => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+  .replace(/&lt;(\/?)(b|i|em|strong)&gt;/gi, "<$1$2>").replace(/&lt;br\s*\/?&gt;/gi, "<br>")
+  .replace(/&lt;a href=(["'])((?:https?:\/\/|mailto:)[^"'\s<>]+)\1&gt;(.*?)&lt;\/a&gt;/gi,
+           '<a href="$2" target="_blank" rel="noopener">$3</a>');
+
+// A blank line in a CSV cell starts a new paragraph; single line breaks (e.g. from PDF copy-paste) are joined.
+const paragraphs = t => t.split(/\n\s*\n/).map(p =>
+  "<p>" + linkify(p.replace(/\x1c/g, "fi").replace(/-\s*\n/g, "").replace(/\s*\n\s*/g, " ").trim()) + "</p>").join("");
+
+const okDate = d => /^\d{4}-(0[1-9]|1[0-2])$/.test(d);
+
+fetch(CSV_URL)
+  .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+  .then(text => build(parseCsv(text).map(r => ({
+    cat: r.category, title: r.title, short: r["short description"], color: r.color, start: r.start, end: r.end,
+    long: r.longdescription
+  })).filter(e => {
+    const ok = okDate(e.start) && (e.end === "present" || okDate(e.end)) && (e.cat === "E" || e.cat === "W");
+    if (!ok) console.warn("Timeline: skipped invalid row", e);
+    return ok;
+  })))
+  .catch(err => {
+    document.getElementById("tcv").textContent = "Timeline could not be loaded (" + err.message + "). Use a web server, not a local file.";
+  });
+
+function build(E) {
+  const wrap = document.getElementById("tcv-wrap"), root = document.getElementById("tcv");
+  const LH = parseFloat(getComputedStyle(root).fontSize) * 1.2, PAD = 6;   // line height of .item, its vertical padding
+  const MO = LH + PAD + 2;                                                  // px per month: one month fits one title line
+  const YEAR_H = MO * 12;
+
+  const now = new Date(), nowM = now.getFullYear() * 12 + now.getMonth() + now.getDate() / 31;
+  const mi = s => { const [y, m] = s.split("-").map(Number); return y * 12 + m - 1; };
+  E.forEach(e => { e.s = mi(e.start); e.f = e.end === "present" ? nowM : mi(e.end) + 1; });
+
+  const topM = Math.max(...E.map(e => e.f)), botM = Math.min(...E.map(e => e.s));   // newest at the top
+  const pos = m => (topM - m) * MO;
+
+  root.innerHTML = '<div class="heads"><h2>Education</h2><h2>Work experience</h2></div><div class="track"></div>';
+  const track = root.querySelector(".track");
+  track.style.height = (topM - botM) * MO + "px";
+  let html = '<div class="axis"></div>';
+  for (let y = Math.floor(botM / 12) + 1; y * 12 < topM; y++)
+    html += `<div class="tick" style="top:${pos(y * 12)}px"></div><div class="year" style="top:${pos(y * 12)}px">${y}</div>`;
+  if (E.some(e => e.end === "present"))
+    html += '<div class="tick" style="top:0"></div><div class="year present" style="top:0">present</div>';
+  track.insertAdjacentHTML("beforeend", html);
+
+  ["E", "W"].forEach(c => {            // overlapping entries go side by side
+    const ends = [];
+    E.filter(e => e.cat === c).sort((a, b) => a.s - b.s).forEach(e => {
+      let l = ends.findIndex(x => x <= e.s);
+      if (l < 0) { l = ends.length; ends.push(0); }
+      ends[l] = e.f; e.lane = l;
+    });
+  });
+
+  let open = null;
+  const closeDetail = () => { if (open) { open.remove(); open = null; } };
+  const fd = s => s === "present" ? s : s.slice(5) + "/" + s.slice(0, 4);
+  const when = e => e.start === e.end ? fd(e.start) : fd(e.start) + " \u2013 " + fd(e.end);
+
+  E.forEach(e => {
+    const h = (e.f - e.s) * MO - 2, full = h >= 3 * LH + PAD;   // three lines if they fit, otherwise the title only
+    const el = document.createElement("div");
+    el.className = "item";
+    el.style.cssText = `background:var(--${e.color}); top:${pos(e.f)}px; height:${h}px; width:var(--w); ` +
+      `${e.cat === "E" ? "right" : "left"}:calc(50% + var(--gap) + (var(--w) + 4px) * ${e.lane})`;
+    (full ? [["b", when(e)], ["b", e.title], ["span", e.short]] : [["b", e.title]]).forEach(([tag, txt]) => {
+      const n = document.createElement(tag); n.textContent = txt; el.appendChild(n);
+    });
+    if (e.long) {
+      el.classList.add("click"); el.tabIndex = 0; el.setAttribute("role", "button");
+      el.addEventListener("click", ev => { ev.stopPropagation(); showDetail(e, el); });
+      el.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); showDetail(e, el); } });
+    }
+    track.appendChild(el);
+  });
+
+  function showDetail(e, anchor) {
+    closeDetail();
+    const d = document.createElement("div");
+    d.className = "detail"; d.style.borderColor = `var(--${e.color})`;
+    d.innerHTML = '<button class="x" aria-label="Close">&times;</button><h3></h3><h3 class="short"></h3><div class="when"></div>' + paragraphs(e.long);
+    d.querySelector("h3").textContent = e.title;
+    d.querySelector("h3.short").textContent = e.short;
+    d.querySelector(".when").textContent = when(e);
+    d.querySelector(".x").onclick = closeDetail;
+    d.addEventListener("click", ev => ev.stopPropagation());
+    track.appendChild(d); open = d;
+    d.style.top = Math.max(0, Math.min(anchor.offsetTop, track.offsetHeight - d.offsetHeight)) + "px";
+  }
+  document.addEventListener("click", closeDetail);
+  document.addEventListener("keydown", ev => { if (ev.key === "Escape") closeDetail(); });
+
+  wrap.scrollLeft = (wrap.scrollWidth - wrap.clientWidth) / 2;   // narrow screens start centered on the axis
+}
+</script>
+
+    </main>
+
+    <!-- 4. Mobile Top Bar (Visible only on narrow screens) -->
+    <header class="mobile-top-bar">
+        <label for="mobile-menu-toggle" class="hamburger-label">&#9776;</label>
+        <span class="brand-name">Kristýna Kramer</span>
+    </header>
+
+    <!-- 5. Mobile Full Screen Menu Overlay -->
+    <nav class="mobile-nav-overlay">
+        <label for="mobile-menu-toggle" class="close-label">&times;</label>
+        
+        <ul class="mobile-nav-links">
+            <li class="section-title"><a href="/cv-home.html" class="active-section">CV</a></li>
+            
+                <li class="subsection"><a href="/cv-home.html" class="active">Home</a></li>
+
+            <li class="section-title"><a href="/data-home.html" class="">DATA</a></li>
+            
+                <li class="subsection"><a href="/data-home.html" class="">Home</a></li>
+            
+                <li class="subsection"><a href="/data-portfolio.html" class="">Portfolio</a></li>
+            
+                <li class="subsection"><a href="/data-certificates.html" class="">Certificates</a></li>
+            
+            <li class="section-title"><a href="/math-home.html" class="">MATH</a></li>
+            
+                <li class="subsection"><a href="/math-home.html" class="">Home</a></li>
+            
+                <li class="subsection"><a href="/math-research.html" class="">Research</a></li>
+            
+                <li class="subsection"><a href="/math-teaching.html" class="">Teaching</a></li>
+            
+            <li class="section-title"><a href="/blog-home.html" class="">BLOG</a></li>
+            
+                <li class="subsection"><a href="/blog-home.html" class="">Home</a></li>
+        </ul>
+    </nav>
+
+    <!-- Visitors counter -->
+    <script data-goatcounter="https://zemkkr.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

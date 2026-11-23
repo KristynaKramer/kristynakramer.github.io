@@ -1,0 +1,6 @@
+Burgundy:    #550000
+Orange:  #8a3b00
+Brown:   #6b4a12
+Teal:    #0d3041
+Indigo: #1d2c63
+Green:  #154029
